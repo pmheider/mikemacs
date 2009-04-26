@@ -10,7 +10,7 @@
 (defun unfill-region ()
   (interactive)
   (let ((fill-column (point-max)))
-    (fill-region nil)))
+    (fill-region (point) (mark))))
 
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
