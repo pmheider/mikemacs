@@ -15,9 +15,10 @@
 (defun match-paren (arg)
   "Go to the matching paren if on a paren; otherwise insert %."
   (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+  (when (not (looking-at "\\s\(")) (backward-char 1))
+  (cond ((looking-at "\\s\(") (forward-list 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-        (t (self-insert-command (or arg 1)))))
+        (t (forward-char 1) (self-insert-command (or arg 1)))))
 
 (defun fixssh ()
   "Run fixssh script for use in GNU screen with X forwarding"
