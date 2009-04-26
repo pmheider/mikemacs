@@ -16,9 +16,10 @@
 ;; ===== Miscellaneous =====
 
 ;; Set coding system to UTF-8
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
+(when (eq (emacs-variant) 'emacs)
+  (set-terminal-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  (prefer-coding-system 'utf-8))
 
 ;; Make sure text files end in newline
 (setq-default require-final-newline t)
@@ -30,11 +31,18 @@
 (setq-default c-basic-offset 4)
 (setq-default indent-tabs-mode nil)
 
+;; Make delete work properly for OS X
+(when (eq (emacs-variant) 'emacs)
+  (normal-erase-is-backspace-mode 0))
+
 ;; Enable wheelmouse support by default
-(cond (window-system
-       (mwheel-install)))
+(when window-system
+  (mwheel-install))
 
 ;; Stop at the end of the file, not just add lines
 (setq next-line-add-newlines nil)
+
+(when (eq (emacs-variant) 'xemacs)
+  (setq default-frame-plist '(width 80 height 40)))
 
 (provide 'mikemacs)
