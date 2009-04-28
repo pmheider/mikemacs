@@ -73,7 +73,8 @@ Examples:
       (setq pos (match-end 0)))
     (while (< pos len)
       (while (string-match "[0-9]+" version-string pos)
-        (setq l (cons (matching-substring 0 version-string) l))
+;;         (setq l (cons (matching-substring 0 version-string) l))
+        (setq l (cons (match-string 0 version-string) l))
         (if (and (< (match-end 0) len)
                  (= ?. (aref version-string (match-end 0))))
             (setq pos (1+ (match-end 0)))
@@ -92,9 +93,9 @@ Examples:
     (unwind-protect
 	(and (string-match regexp emacs-version)
 	     (setq version
-		   (string-to-int (substring emacs-version
-					     (match-beginning 1)
-					     (match-end 1)))))
+		   (string-to-number (substring emacs-version
+                                                (match-beginning 1)
+                                                (match-end 1)))))
       (store-match-data old-match-data))
     version))
 
