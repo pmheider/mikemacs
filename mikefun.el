@@ -35,4 +35,18 @@
           (setenv key val)))
       (kill-buffer buffer))))
 
+;; http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/47275
+(defun g0-ruby-load-buffer ()
+  "Save current buffer, and load it into an inferior ruby process.
+
+If there is no inferior ruby process running, start one.  Otherwise,
+load the current buffer into the currently running process.  Switch to
+`ruby-buffer'."
+  (interactive)
+  (save-buffer)
+  (let ((bufname (buffer-name))
+        (pop-up-windows t))
+    (run-ruby ruby-program-name)
+    (ruby-load-file bufname)))
+
 (provide 'mikefun)
