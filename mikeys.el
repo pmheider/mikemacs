@@ -6,7 +6,10 @@
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "%" 'match-paren)
 
-;; text-mode keymappings
+;; mode-specific keymappings
 (define-key text-mode-map (kbd "TAB") 'self-insert-command);
+(when (featurep 'inf-ruby)
+  (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
+    'g0-ruby-load-buffer))
 
 (provide 'mikeys)
