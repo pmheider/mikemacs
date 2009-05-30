@@ -7,32 +7,26 @@
 (autoload 'htmlize-region "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-many-files "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-many-files-dired "htmlize" "Syntax highlighting to HTML" t)
-(autoload 'else-mode "else-mode" "ELSE minor mode" t)
-(autoload 'ruby-mode "ruby-mode" "Load ruby-mode" t)
-(autoload 'php-mode "php-mode" "Load php-mode" t)
-(autoload 'python-mode "python-mode" "Load python-mode" t)
 (autoload 'matlab-mode "matlab" "Load matlab-mode" t)
 (autoload 'pstxt-x-unfill-region "pstxt" "Unfill region" t)
 (autoload 'pstxt-x-unfill-buffer "pstxt" "Unfill buffer" t)
-(autoload 'run-acl "init-for-acl" "Initialize Allegro Lisp" t) ;; XEmacs only
-(autoload 'git-blame-mode "git-blame"
-  "Minor mode for incremental blame for Git." t)
+(when (eq (emacs-variant) 'xemacs)
+  (autoload 'run-acl "init-for-acl" "Initialize Allegro Lisp" t))
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.ypp$" . c++-mode))
-(add-to-list 'auto-mode-alist '("\\.js$" . c-mode))
-(add-to-list 'auto-mode-alist '("\\.html$" . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.css$" . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+;; (add-to-list 'auto-mode-alist '("\\.js$" . c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html$" . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.php$" . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.css$" . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$" . inferior-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
-(add-to-list 'auto-mode-alist '("\\.cl$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.snepslog$" . lisp-mode))
 
-(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . inferior-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; Set global modes
@@ -47,7 +41,6 @@
 
 ;; Mode hooks
 (add-hook 'text-mode-hook (lambda ()
-                            (turn-on-auto-fill)
                             (setq indent-tabs-mode t)
                             (setq tab-width 8)
                             ))
