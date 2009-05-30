@@ -65,4 +65,6 @@
 ;; Always indent with spaces
 (setq-default indent-tabs-mode nil)
 
+(add-hook 'shell-mode-hook (lambda () (turn-off-auto-fill)))
+
 (provide 'mikemodes)
