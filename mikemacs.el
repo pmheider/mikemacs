@@ -45,4 +45,6 @@
 (when (eq (emacs-variant) 'xemacs)
   (setq default-frame-plist '(width 80 height 40)))
 
+(add-to-list 'completion-ignored-extensions ".elc")
+
 (provide 'mikemacs)
