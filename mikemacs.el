@@ -77,21 +77,34 @@
 
 ;; ===== Library-specific initializations =====
 
+;; Slime: Superior Lisp Interaction Mode for Emacs
 (when (and (eq (emacs-variant) 'emacs) (locate-library "slime-autoloads"))
   (require 'slime-autoloads)
   (slime-setup))
 
-(when (featurep 'ido)
+;; Ido: interactive do
+(when (locate-library "ido")
+  (require 'ido)
   (ido-mode t)
   (add-to-list 'ido-ignore-files "\\`\\.git/")
   )
-(when (featurep 'yasnippet)
+
+;; Yasnippet: Yet another snippet library
+(when (locate-library "yasnippet")
+  (require 'yasnippet)
   (yas/initialize)
   (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
-(setq py-python-command-args '( "-colors" "NoColor"))
-(when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
-(when (featurep 'git-emacs)
-  (setq git--completing-read #'completing-read)) ; ido not working, why?
+
+(setq py-python-command-args '( "-colors" "NoColor")) ; for py-shell
+
+;; vc-git and git-emacs for emacs
+(when (locate-library "vc-git")
+  (require 'vc-git)
+  (add-to-list 'vc-handled-backends 'git))
+(cond ((and window-system (locate-library "git-emacs"))
+       (require 'git-emacs)
+       (setq git--completing-read #'completing-read)) ; ido not working, why?
+      ((locate-library "git") (require 'git)))
 
 
 ;; ===== Function definitions =====
