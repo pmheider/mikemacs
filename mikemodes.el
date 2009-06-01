@@ -64,7 +64,6 @@
 ;; Make #! scripts executable
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-
 ;; Turn off auto-filling in shells
 (add-hook 'shell-mode-hook (lambda () (turn-off-auto-fill)))
 
