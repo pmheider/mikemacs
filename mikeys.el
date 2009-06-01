@@ -7,9 +7,12 @@
 (global-set-key "%" 'match-paren)
 
 ;; mode-specific keymappings
-(define-key text-mode-map (kbd "TAB") 'self-insert-command);
-(when (featurep 'inf-ruby)
-  (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
-    'g0-ruby-load-buffer))
+
+(define-key text-mode-map (kbd "TAB") 'self-insert-command) ; text mode
+(add-hook 'inferior-ruby-mode-hook
+          (lambda ()
+            (when (featurep 'inf-ruby)
+              (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
+                'g0-ruby-load-buffer))))
 
 (provide 'mikeys)
