@@ -177,6 +177,9 @@ load the current buffer into the currently running process.  Switch to
     (run-ruby ruby-program-name)
     (ruby-load-file bufname)))
 
+;; Eshell definitions
+(defun eshell/eshell () (rename-uniquely) (eshell))
+
 
 ;; ===== Keymappings =====
 
