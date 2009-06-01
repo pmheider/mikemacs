@@ -7,11 +7,168 @@
 ;; Author: Mike Prentice (mjp44@buffalo.edu)
 ;; License: GPL version 2 or (at your option) any later version
 
+;; ===== Required =====
+
 (require 'emacs-variants)
-(require 'mikemodes)
-(require 'mikelib)
-(require 'mikefun)
-(require 'mikeys)
+
+
+;; ===== Modes =====
+
+;; autoload modes
+(autoload 'html-helper-mode "html-helper-mode" "Load html-helper-mode" t)
+(autoload 'htmlize-file "htmlize" "Syntax highlighting to HTML" t)
+(autoload 'htmlize-buffer "htmlize" "Syntax highlighting to HTML" t)
+(autoload 'htmlize-region "htmlize" "Syntax highlighting to HTML" t)
+(autoload 'htmlize-many-files "htmlize" "Syntax highlighting to HTML" t)
+(autoload 'htmlize-many-files-dired "htmlize" "Syntax highlighting to HTML" t)
+(autoload 'matlab-mode "matlab" "Load matlab-mode" t)
+(autoload 'pstxt-x-unfill-region "pstxt" "Unfill region" t)
+(autoload 'pstxt-x-unfill-buffer "pstxt" "Unfill buffer" t)
+(when (eq (emacs-variant) 'xemacs)
+  (autoload 'run-acl "init-for-acl" "Initialize Allegro Lisp" t))
+
+(add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
+(add-to-list 'auto-mode-alist '("\\.ypp$" . c++-mode))
+;; (add-to-list 'auto-mode-alist '("\\.js$" . c-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html$" . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.php$" . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.css$" . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
+(add-to-list 'auto-mode-alist '("\\.snepslog$" . lisp-mode))
+
+(add-to-list 'interpreter-mode-alist '("ruby" . inferior-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; Set global modes
+(setq-default auto-fill-function 'do-auto-fill)
+(setq-default line-number-mode t)       ; display line
+(setq-default column-number-mode t)     ; display column
+(setq-default font-lock-maximum-decoration t) ; font locking
+(if (fboundp 'global-font-lock-mode)
+    (global-font-lock-mode t)           ; GNU Emacs font locking
+  (setq font-lock-auto-fontify t))      ; XEmacs font locking
+(setq-default indent-tabs-mode nil)     ; Always indent with spaces
+
+;; Enable visual feedback on selections
+(setq transient-mark-mode t)
+
+;; Mode hooks
+
+(add-hook 'text-mode-hook (lambda ()
+                            (setq indent-tabs-mode t)
+                            (setq tab-width 8)
+                            ))
+
+(add-hook 'comint-output-filter-functions
+          'comint-watch-for-password-prompt)
+
+(add-hook 'sql-interactive-mode-hook (lambda () (setq tab-width 8)))
+
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (when (featurep 'slime) (slime-mode t))))
+(add-hook 'inferior-lisp-mode-hook
+          (lambda ()
+            (when (featurep 'slime) (slime-setup '(inferior-slime-mode)))))
+
+;; Make #! scripts executable
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
+;; Turn off auto-filling in shells
+(add-hook 'shell-mode-hook (lambda () (turn-off-auto-fill)))
+
+
+;; ===== Library-specific initializations =====
+
+(when (featurep 'slime)
+  (slime-setup))
+(when (featurep 'ido)
+  (ido-mode t)
+  (add-to-list 'ido-ignore-files "\\`\\.git/")
+  )
+(when (featurep 'yasnippet)
+  (yas/initialize)
+  (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
+(setq py-python-command-args '( "-colors" "NoColor"))
+(when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
+(when (featurep 'git-emacs)
+  (setq git--completing-read #'completing-read)) ; ido not working, why?
+
+
+;; ===== Function definitions =====
+
+;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
+;;; Takes a multi-line paragraph and makes it into a single line of text.
+(defun unfill-paragraph ()
+  (interactive)
+  (let ((fill-column (point-max)))
+    (fill-paragraph nil)))
+
+(defun unfill-region ()
+  (interactive)
+  (let ((fill-column (point-max)))
+    (fill-region (point) (mark))))
+
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1))
+        (t (backward-char 1)
+           (cond ((looking-at "\\s\)")
+                  (forward-char 1) (backward-list 1))
+                 (t (forward-char 1) (self-insert-command (or arg 1)))))))
+
+(defun fixssh ()
+  "Run fixssh script for use in GNU screen with X forwarding"
+  (interactive)
+  (save-excursion
+    (let ((buffer (find-file-noselect "~/bin/fixssh")))
+      (set-buffer buffer)
+      (setq buffer-read-only t)
+      (goto-char (point-min))
+      (while (re-search-forward
+              "\\([A-Z_][A-Z0-9_]*\\) *= *\"\\([^\"]*\\)\"" nil t)
+        (let ((key (match-string 1))
+              (val (match-string 2)))
+          (setenv key val)))
+      (kill-buffer buffer))))
+
+;; http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/47275
+(defun g0-ruby-load-buffer ()
+  "Save current buffer, and load it into an inferior ruby process.
+
+If there is no inferior ruby process running, start one.  Otherwise,
+load the current buffer into the currently running process.  Switch to
+`ruby-buffer'."
+  (interactive)
+  (save-buffer)
+  (let ((bufname (buffer-name))
+        (pop-up-windows t))
+    (run-ruby ruby-program-name)
+    (ruby-load-file bufname)))
+
+
+;; ===== Keymappings =====
+
+;; Global keymappings
+(global-set-key "\M-Q" 'unfill-paragraph)
+(global-set-key "\C-m" 'newline-and-indent)
+(global-set-key "\C-h" 'backward-delete-char)
+(global-set-key "%" 'match-paren)
+
+;; mode-specific keymappings
+
+(define-key text-mode-map (kbd "TAB") 'self-insert-command)
+(add-hook 'inferior-ruby-mode-hook
+          (lambda ()
+            (when (featurep 'inf-ruby)
+              (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
+                'g0-ruby-load-buffer))))
+
 
 ;; ===== Miscellaneous =====
 
