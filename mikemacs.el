@@ -68,13 +68,6 @@
 
 (add-hook 'sql-interactive-mode-hook (lambda () (setq tab-width 8)))
 
-(add-hook 'lisp-mode-hook
-          (lambda ()
-            (when (featurep 'slime) (slime-mode t))))
-(add-hook 'inferior-lisp-mode-hook
-          (lambda ()
-            (when (featurep 'slime) (slime-setup '(inferior-slime-mode)))))
-
 ;; Make #! scripts executable
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
@@ -84,8 +77,10 @@
 
 ;; ===== Library-specific initializations =====
 
-(when (featurep 'slime)
+(when (and (eq (emacs-variant) 'emacs) (locate-library "slime-autoloads"))
+  (require 'slime-autoloads)
   (slime-setup))
+
 (when (featurep 'ido)
   (ido-mode t)
   (add-to-list 'ido-ignore-files "\\`\\.git/")
