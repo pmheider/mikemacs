@@ -21,7 +21,7 @@
 ;; (add-to-list 'auto-mode-alist '("\\.php$" . html-helper-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.css$" . html-helper-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-(add-to-list 'auto-mode-alist '("\\.rb$" . inferior-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
 (add-to-list 'auto-mode-alist '("\\.snepslog$" . lisp-mode))
@@ -31,33 +31,41 @@
 
 ;; Set global modes
 (setq-default auto-fill-function 'do-auto-fill)
-(setq-default font-lock-maximum-decoration t)
-(setq-default line-number-mode t)
-(setq-default column-number-mode t)
-(when (eq (emacs-variant) 'emacs) (global-font-lock-mode t))
+(setq-default line-number-mode t)       ; display line
+(setq-default column-number-mode t)     ; display column
+(setq-default font-lock-maximum-decoration t) ; font locking
+(if (fboundp 'global-font-lock-mode)
+    (global-font-lock-mode t)           ; GNU Emacs font locking
+  (setq font-lock-auto-fontify t))      ; XEmacs font locking
+(setq-default indent-tabs-mode nil)     ; Always indent with spaces
 
 ;; Enable visual feedback on selections
 (setq transient-mark-mode t)
 
 ;; Mode hooks
+
 (add-hook 'text-mode-hook (lambda ()
                             (setq indent-tabs-mode t)
                             (setq tab-width 8)
                             ))
+
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
+
 (add-hook 'sql-interactive-mode-hook (lambda () (setq tab-width 8)))
 
-(when (featurep 'slime)
-  (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
-  (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t))))
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (when (featurep 'slime) (slime-mode t))))
+(add-hook 'inferior-lisp-mode-hook
+          (lambda ()
+            (when (featurep 'slime) (slime-setup '(inferior-slime-mode)))))
 
 ;; Make #! scripts executable
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-;; Always indent with spaces
-(setq-default indent-tabs-mode nil)
 
+;; Turn off auto-filling in shells
 (add-hook 'shell-mode-hook (lambda () (turn-off-auto-fill)))
 
 (provide 'mikemodes)
