@@ -78,6 +78,12 @@
 ;; ===== Library-specific initializations =====
 
 ;; Slime: Superior Lisp Interaction Mode for Emacs
+;; Requires setting machine-specific executable paths, e.g.
+;; (setq inferior-lisp-program "/path/to/lisp-exe")
+;; (setq slime-lisp-implementations
+;;       '((sbcl ("/path/to/sbcl"))
+;;         (ccl ("/path/to/ccl"))
+;;         (clisp ("/path/to/clisp"))))
 (when (and (eq (emacs-variant) 'emacs) (locate-library "slime-autoloads"))
   (require 'slime-autoloads)
   (slime-setup))
@@ -90,10 +96,10 @@
   )
 
 ;; Yasnippet: Yet another snippet library
-(when (locate-library "yasnippet")
-  (require 'yasnippet)
-  (yas/initialize)
-  (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
+;; (when (locate-library "yasnippet")
+;;   (require 'yasnippet)
+;;   (yas/initialize)
+;;   (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
 
 (setq py-python-command-args '( "-colors" "NoColor")) ; for py-shell
 
@@ -105,6 +111,17 @@
        (require 'git-emacs)
        (setq git--completing-read #'completing-read)) ; ido not working, why?
       ((locate-library "git") (require 'git)))
+
+(when (locate-library "ipython") (require 'ipython))
+(when (locate-library "graphviz-dot-mode")
+  (load-library "graphviz-dot-mode"))
+(when (locate-library "sml-mode-startup")
+  (load-library "sml-mode-startup"))
+
+;; Requires machine-specific erlang executable path, e.g.
+;; (setq erlang-root-dir "/path/to/erlang")
+;; (add-to-list 'exec-path "/path/to/erlang/bin")
+(when (locate-library "erlang-start") (require 'erlang-start))
 
 
 ;; ===== Function definitions =====
