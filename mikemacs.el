@@ -96,6 +96,7 @@
   )
 
 ;; Yasnippet: Yet another snippet library
+;; There is some problem with function remove-if that prevents loading.
 ;; (when (locate-library "yasnippet")
 ;;   (require 'yasnippet)
 ;;   (yas/initialize)
