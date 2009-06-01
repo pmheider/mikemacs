@@ -15,13 +15,13 @@
 ;; ===== Modes =====
 
 ;; autoload modes
-(autoload 'html-helper-mode "html-helper-mode" "Load html-helper-mode" t)
+(autoload 'html-helper-mode "html-helper-mode" "Enhanced HTML editing" t)
 (autoload 'htmlize-file "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-buffer "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-region "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-many-files "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-many-files-dired "htmlize" "Syntax highlighting to HTML" t)
-(autoload 'matlab-mode "matlab" "Load matlab-mode" t)
+(autoload 'matlab-mode "matlab" "Major mode for editing Matlab files" t)
 (autoload 'pstxt-x-unfill-region "pstxt" "Unfill region" t)
 (autoload 'pstxt-x-unfill-buffer "pstxt" "Unfill buffer" t)
 (when (eq (emacs-variant) 'xemacs)
