@@ -26,6 +26,16 @@
 (autoload 'pstxt-x-unfill-buffer "pstxt" "Unfill buffer" t)
 (when (eq (emacs-variant) 'xemacs)
   (autoload 'run-acl "init-for-acl" "Initialize Allegro Lisp" t))
+(autoload 'sml-mode "sml-mode-startup" "Major mode for editing SML files" t)
+(autoload 'run-sml "sml-mode-startup" "Inferior SML shell" t)
+;; Requires machine-specific erlang executable path, e.g.
+;; (setq erlang-root-dir "/path/to/erlang")
+;; (add-to-list 'exec-path "/path/to/erlang/bin")
+(autoload 'erlang-mode "erlang-start" "Major mode for editing Erlang files" t)
+(autoload 'run-erlang "erlang-start" "Inferior Erlang shell" t)
+(autoload 'py-shell "ipython" "Inferior interactive ipython shell" t)
+(autoload 'graphviz-dot-mode "graphviz-dot-mode"
+  "Major mode for editing Graphviz dot files" t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
@@ -40,6 +50,7 @@
 (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
 (add-to-list 'auto-mode-alist '("\\.snepslog$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.ml$" . sml-mode))
+(add-to-list 'auto-mode-alist '("\\.dot$" . graphviz-dot-mode))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . inferior-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -74,6 +85,9 @@
 
 ;; Turn off auto-filling in shells
 (add-hook 'shell-mode-hook (lambda () (turn-off-auto-fill)))
+
+(add-hook 'graphviz-dot-mode-hook
+          (lambda () (setq graphviz-dot-auto-indent-on-semi nil)))
 
 
 ;; ===== Library-specific initializations =====
@@ -113,19 +127,6 @@
        (require 'git-emacs)
        (setq git--completing-read #'completing-read)) ; ido not working, why?
       ((locate-library "git") (require 'git)))
-
-(when (locate-library "ipython") (require 'ipython))
-(when (locate-library "graphviz-dot-mode")
-  (load-library "graphviz-dot-mode")
-  (add-hook 'graphviz-dot-mode-hook
-            (lambda () (setq graphviz-dot-auto-indent-on-semi nil))))
-(when (locate-library "sml-mode-startup")
-  (load-library "sml-mode-startup"))
-
-;; Requires machine-specific erlang executable path, e.g.
-;; (setq erlang-root-dir "/path/to/erlang")
-;; (add-to-list 'exec-path "/path/to/erlang/bin")
-(when (locate-library "erlang-start") (require 'erlang-start))
 
 
 ;; ===== Function definitions =====
