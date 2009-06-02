@@ -39,6 +39,7 @@
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
 (add-to-list 'auto-mode-alist '("\\.snepslog$" . lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.ml$" . sml-mode))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . inferior-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -188,10 +189,16 @@ load the current buffer into the currently running process.  Switch to
 (global-set-key "\C-m" 'newline-and-indent)
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "%" 'match-paren)
+(global-set-key "\C-ce" 'eshell)
 
 ;; mode-specific keymappings
 
 (define-key text-mode-map (kbd "TAB") 'self-insert-command)
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-key eshell-mode-map [(control ?a)] 'eshell-bol)
+            (define-key eshell-mode-map [(control ?c) (control ?a)]
+              'move-beginning-of-line)))
 (add-hook 'inferior-ruby-mode-hook
           (lambda ()
             (when (featurep 'inf-ruby)
