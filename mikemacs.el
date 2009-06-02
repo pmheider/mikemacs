@@ -50,6 +50,8 @@
 (add-to-list 'auto-mode-alist '("\\.m$" . matlab-mode))
 (add-to-list 'auto-mode-alist '("\\.snepslog$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.ml$" . sml-mode))
+(add-to-list 'auto-mode-alist '("\\.sml$" . sml-mode))
+(add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.dot$" . graphviz-dot-mode))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . inferior-ruby-mode))
