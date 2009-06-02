@@ -116,7 +116,9 @@
 
 (when (locate-library "ipython") (require 'ipython))
 (when (locate-library "graphviz-dot-mode")
-  (load-library "graphviz-dot-mode"))
+  (load-library "graphviz-dot-mode")
+  (add-hook 'graphviz-dot-mode-hook
+            (lambda () (setq graphviz-dot-auto-indent-on-semi nil))))
 (when (locate-library "sml-mode-startup")
   (load-library "sml-mode-startup"))
 
