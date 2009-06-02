@@ -87,6 +87,7 @@
 
 ;; Turn off auto-filling in shells
 (add-hook 'shell-mode-hook (lambda () (turn-off-auto-fill)))
+(add-hook 'comint-mode-hook (lambda () (turn-off-auto-fill)))
 
 (add-hook 'graphviz-dot-mode-hook
           (lambda () (setq graphviz-dot-auto-indent-on-semi nil)))
