@@ -199,6 +199,10 @@ load the current buffer into the currently running process.  Switch to
             (define-key eshell-mode-map [(control ?a)] 'eshell-bol)
             (define-key eshell-mode-map [(control ?c) (control ?a)]
               'move-beginning-of-line)))
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (define-key ruby-mode-map "\C-m"
+              'ruby-reindent-then-newline-and-indent)))
 (add-hook 'inferior-ruby-mode-hook
           (lambda ()
             (when (featurep 'inf-ruby)
