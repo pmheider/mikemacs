@@ -124,7 +124,9 @@
 ;;   (yas/initialize)
 ;;   (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
 
-(setq py-python-command-args '( "-colors" "NoColor")) ; for py-shell
+(when (locate-library "ipython")
+  (autoload 'py-shell "ipython" "Interactive python shell with ipython" t)
+  (setq py-python-command-args '( "-colors" "NoColor")))
 
 ;; vc-git and git-emacs for emacs
 (when (locate-library "vc-git")
