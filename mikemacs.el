@@ -7,6 +7,11 @@
 ;; Author: Mike Prentice (mjp44@buffalo.edu)
 ;; License: GPL version 2 or (at your option) any later version
 
+;; ===== Variables =====
+(defvar mikemacs-lib-dir "~/.emacs.d/mikemacs"
+  "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
+
+
 ;; ===== Required =====
 
 (require 'emacs-variants)
@@ -129,6 +134,8 @@
        (require 'git-emacs)
        (setq git--completing-read #'completing-read)) ; ido not working, why?
       ((locate-library "git") (require 'git)))
+
+(setq abbrev-file-name 
 
 
 ;; ===== Function definitions =====
