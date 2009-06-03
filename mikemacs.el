@@ -8,7 +8,7 @@
 ;; License: GPL version 2 or (at your option) any later version
 
 ;; ===== Variables =====
-(defvar mikemacs-lib-dir "~/.emacs.d/mikemacs"
+(defvar mikemacs-lib-dir "~/.emacs.d/mikemacs/"
   "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
 
 
@@ -38,7 +38,7 @@
 ;; (add-to-list 'exec-path "/path/to/erlang/bin")
 (autoload 'erlang-mode "erlang-start" "Major mode for editing Erlang files" t)
 (autoload 'run-erlang "erlang-start" "Inferior Erlang shell" t)
-(autoload 'py-shell "ipython" "Inferior interactive ipython shell" t)
+;; (autoload 'py-shell "ipython" "Inferior interactive ipython shell" t)
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
   "Major mode for editing Graphviz dot files" t)
 
@@ -135,7 +135,11 @@
        (setq git--completing-read #'completing-read)) ; ido not working, why?
       ((locate-library "git") (require 'git)))
 
-(setq abbrev-file-name 
+;; Abbrev mode settings
+(setq abbrev-file-name (concat mikemacs-lib-dir "abbrev-defs.el"))
+(read-abbrev-file abbrev-file-name t)
+(setq dabbrev-case-replace nil)
+(setq abbrev-mode t)
 
 
 ;; ===== Function definitions =====
