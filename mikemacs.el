@@ -213,6 +213,10 @@ load the current buffer into the currently running process.  Switch to
             (when (featurep 'inf-ruby)
               (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
                 'g0-ruby-load-buffer))))
+(add-hook 'erlang-mode-hook
+          (lambda ()
+            (define-key erlang-mode-map "\C-m"
+              'newline-and-indent)))
 
 
 ;; ===== Miscellaneous =====
@@ -248,5 +252,8 @@ load the current buffer into the currently running process.  Switch to
   (setq default-frame-plist '(width 80 height 40)))
 
 (add-to-list 'completion-ignored-extensions ".elc")
+
+;; Save bookmarks whenever created or deleted
+(setq bookmark-save-flag 1)
 
 (provide 'mikemacs)
