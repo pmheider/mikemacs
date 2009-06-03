@@ -7,6 +7,11 @@
 ;; Author: Mike Prentice (mjp44@buffalo.edu)
 ;; License: GPL version 2 or (at your option) any later version
 
+;; ===== Variables =====
+(defvar mikemacs-lib-dir "~/.emacs.d/mikemacs/"
+  "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
+
+
 ;; ===== Required =====
 
 (require 'emacs-variants)
@@ -33,7 +38,6 @@
 ;; (add-to-list 'exec-path "/path/to/erlang/bin")
 (autoload 'erlang-mode "erlang-start" "Major mode for editing Erlang files" t)
 (autoload 'run-erlang "erlang-start" "Inferior Erlang shell" t)
-(autoload 'py-shell "ipython" "Inferior interactive ipython shell" t)
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
   "Major mode for editing Graphviz dot files" t)
 
@@ -119,7 +123,9 @@
 ;;   (yas/initialize)
 ;;   (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
 
-(setq py-python-command-args '( "-colors" "NoColor")) ; for py-shell
+(when (locate-library "ipython")
+  (autoload 'py-shell "ipython" "Interactive python shell with ipython" t)
+  (setq py-python-command-args '( "-colors" "NoColor")))
 
 ;; vc-git and git-emacs for emacs
 (when (locate-library "vc-git")
@@ -129,6 +135,12 @@
        (require 'git-emacs)
        (setq git--completing-read #'completing-read)) ; ido not working, why?
       ((locate-library "git") (require 'git)))
+
+;; Abbrev mode settings
+(setq abbrev-file-name (concat mikemacs-lib-dir "abbrev-defs.el"))
+(read-abbrev-file abbrev-file-name t)
+(setq dabbrev-case-replace nil)
+(setq abbrev-mode t)
 
 
 ;; ===== Function definitions =====
@@ -213,6 +225,10 @@ load the current buffer into the currently running process.  Switch to
             (when (featurep 'inf-ruby)
               (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
                 'g0-ruby-load-buffer))))
+(add-hook 'erlang-mode-hook
+          (lambda ()
+            (define-key erlang-mode-map "\C-m"
+              'newline-and-indent)))
 
 
 ;; ===== Miscellaneous =====
@@ -248,5 +264,8 @@ load the current buffer into the currently running process.  Switch to
   (setq default-frame-plist '(width 80 height 40)))
 
 (add-to-list 'completion-ignored-extensions ".elc")
+
+;; Save bookmarks whenever created or deleted
+(setq bookmark-save-flag 1)
 
 (provide 'mikemacs)
