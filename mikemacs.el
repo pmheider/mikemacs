@@ -38,7 +38,6 @@
 ;; (add-to-list 'exec-path "/path/to/erlang/bin")
 (autoload 'erlang-mode "erlang-start" "Major mode for editing Erlang files" t)
 (autoload 'run-erlang "erlang-start" "Inferior Erlang shell" t)
-;; (autoload 'py-shell "ipython" "Inferior interactive ipython shell" t)
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
   "Major mode for editing Graphviz dot files" t)
 
