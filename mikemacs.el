@@ -226,12 +226,9 @@ load the current buffer into the currently running process.  Switch to
 (add-hook 'ruby-mode-hook
           (lambda ()
             (define-key ruby-mode-map "\C-m"
-              'ruby-reindent-then-newline-and-indent)))
-(add-hook 'inferior-ruby-mode-hook
-          (lambda ()
-            (when (featurep 'inf-ruby)
-              (define-key inferior-ruby-mode-map [(control ?c) (control ?l)]
-                'g0-ruby-load-buffer))))
+              'ruby-reindent-then-newline-and-indent)
+            (define-key ruby-mode-map [(control ?c) (control ?l)]
+              'g0-ruby-load-buffer)))
 (add-hook 'erlang-mode-hook
           (lambda ()
             (define-key erlang-mode-map "\C-m"
