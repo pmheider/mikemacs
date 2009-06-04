@@ -149,6 +149,10 @@
 (setq dabbrev-case-replace nil)
 (setq abbrev-mode t)
 
+(when (locate-library "highlight-parentheses")
+  (require 'highlight-parentheses))
+(setq show-paren-mode t)
+
 
 ;; ===== Function definitions =====
 
@@ -214,6 +218,7 @@ load the current buffer into the currently running process.  Switch to
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "%" 'match-paren)
 (global-set-key "\C-ce" 'eshell)
+(global-set-key "\C-cr" 'revert-buffer)
 
 ;; mode-specific keymappings
 
