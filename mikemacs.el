@@ -132,6 +132,7 @@
   (require 'vc-git)
   (add-to-list 'vc-handled-backends 'git))
 (cond ((and window-system (locate-library "git-emacs"))
+       (require 'git)
        (require 'git-emacs)
        (setq git--completing-read #'completing-read)) ; ido not working, why?
       ((locate-library "git") (require 'git)))
