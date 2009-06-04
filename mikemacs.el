@@ -5,7 +5,7 @@
 ;; 
 ;; Copyright (C) 2009 Mike Prentice
 ;; Author: Mike Prentice (mjp44@buffalo.edu)
-;; License: GPL version 2 or (at your option) any later version
+;; License: GPL version 3 or (at your option) any later version
 
 ;; ===== Variables =====
 (defvar mikemacs-lib-dir "~/.emacs.d/mikemacs/"
