@@ -95,6 +95,12 @@
 (add-hook 'graphviz-dot-mode-hook
           (lambda () (setq graphviz-dot-auto-indent-on-semi nil)))
 
+;; Load inf-ruby if exists
+(add-hook 'ruby-mode
+          (lambda ()
+            (when (locate-library "inf-ruby")
+              (require 'inf-ruby))))
+
 
 ;; ===== Library-specific initializations =====
 
