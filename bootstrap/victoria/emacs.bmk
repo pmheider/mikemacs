@@ -1,0 +1,29 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("bashrc"
+  ((filename . "~/.bashrc")
+   (front-context-string . " varenka=\"ssh mp")
+   (rear-context-string . "e.net\"\n    alias")
+   (position . 2738)))
+ ("cse305_su09"
+  ((filename . "~/Documents/grad/teaching/cse305_su09/")
+   (front-context-string . ".DS_Store\n  drwx")
+   (rear-context-string . "92 Jun  3 16:41 ")
+   (position . 286)))
+ ("mikemacs.el"
+  ((filename . "~/.emacs.d/mikemacs/mikemacs.el")
+   (front-context-string . "\n       (require")
+   (rear-context-string . "  (require 'git)")
+   (position . 5278)))
+ ("policy.txt"
+  ((filename . "~/Documents/policy.txt")
+   (front-context-string . "\nsanctuaryforall")
+   (rear-context-string . ":          mjp35")
+   (position . 4324)))
+ (".emacs"
+  ((filename . "/Users/mprentice/.emacs")
+   (front-context-string . ";; Mike's custom")
+   (rear-context-string)
+   (position . 1))))
