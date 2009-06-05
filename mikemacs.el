@@ -14,7 +14,7 @@
 
 ;; ===== Required =====
 
-(load (concat *my-emacs-lib-dir* "emacs-variants"))
+;; try not to require anything, rely on autoloads
 
 
 ;; ===== Modes =====
