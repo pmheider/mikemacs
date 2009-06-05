@@ -11,6 +11,9 @@
 (defvar *my-emacs-lib-dir* "~/.emacs.d/mikemacs/"
   "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
 
+;; Mike-specific!
+(setq user-mail-address "mjp44@buffalo.edu")
+
 
 ;; ===== Required =====
 
