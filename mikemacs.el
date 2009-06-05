@@ -27,8 +27,6 @@
 (autoload 'htmlize-many-files "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'htmlize-many-files-dired "htmlize" "Syntax highlighting to HTML" t)
 (autoload 'matlab-mode "matlab" "Major mode for editing Matlab files" t)
-(autoload 'pstxt-x-unfill-region "pstxt" "Unfill region" t)
-(autoload 'pstxt-x-unfill-buffer "pstxt" "Unfill buffer" t)
 (when (eq (emacs-variant) 'xemacs)
   (autoload 'run-acl "init-for-acl" "Initialize Allegro Lisp" t))
 (autoload 'sml-mode "sml-mode-startup" "Major mode for editing SML files" t)
