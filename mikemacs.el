@@ -14,7 +14,7 @@
 
 ;; ===== Required =====
 
-(require 'emacs-variants)
+(load (concat *my-emacs-lib-dir* "emacs-variants"))
 
 
 ;; ===== Modes =====
@@ -274,5 +274,3 @@ load the current buffer into the currently running process.  Switch to
 
 ;; Save bookmarks whenever created or deleted
 (setq bookmark-save-flag 1)
-
-(provide 'mikemacs)

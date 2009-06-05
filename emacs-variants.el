@@ -138,6 +138,4 @@ Note: system-configuration is not defined prior to Emacs 19.23."
          (store-match-data match-data)
          result)))
 
-(provide 'emacs-variants)
-
 ;;; emacs-variants.el ends here.

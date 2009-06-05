@@ -6,11 +6,11 @@
 (defun load-init-if-exists (machine file)
   (let ((f (bootstrap-file machine file)))
     (if (file-exists-p (concat f ".el"))
-	(load-file f))))
+	(load f))))
 
 (defun bootstrap-init (machine)
   (load-init-if-exists machine "before")
-  (load-file (concat *my-emacs-lib-dir* "emacs"))
+  (load (concat *my-emacs-lib-dir* "mikemacs"))
   (load-init-if-exists machine "after")
   (setq bookmark-default-file
 	(bootstrap-file machine "emacs.bmk")))
