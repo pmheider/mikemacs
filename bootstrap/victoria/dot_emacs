@@ -1,41 +1,5 @@
-;; .emacs
+;; -*- emacs-lisp -*-
 
-;; ===== Load libraries (customize for installed packages) =====
-
-;; Set load paths
-(add-to-list 'load-path "/opt/local/share/emacs/site-lisp")
-(add-to-list 'load-path "~/.emacs.d/plugins")
-(add-to-list 'load-path "~/.emacs.d/plugins/slime")
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/mikemacs")
-(add-to-list 'load-path "~/src/git/contrib/emacs")
-(add-to-list 'load-path "/opt/local/lib/erlang/lib/tools-2.6.2/emacs")
-(add-to-list 'load-path "~/.emacs.d/plugins/git-emacs")
-
-;; Machine-specific variables
-(setq inferior-lisp-program "/Applications/AllegroCL/mlisp")
-(setq slime-lisp-implementations
-      '((mlisp ("/Applications/AllegroCL/mlisp"))
-        (alisp ("/Applications/AllegroCL/alisp"))
-        (sbcl ("/opt/local/bin/sbcl"))
-        (ccl ("/Users/mprentice/bin/ccl64"))
-        (clisp ("/opt/local/bin/clisp"))))
-(setq erlang-root-dir "/opt/local/lib/erlang")
-(add-to-list 'exec-path "/opt/local/lib/erlang/bin")
-(setq scheme-program-name "mzscheme")
-
-;; Load libraries
-
-(require 'mikemacs)
-
-;; ===== Machine-specific customizations =====
-
-;; ===== Custom (do not edit) =====
-(custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
-  ;; Your init file should contain only one such instance.
-)
-(custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
-  ;; Your init file should contain only one such instance.
- )
+(defvar *my-emacs-lib-dir* "~/.emacs.d/mikemacs/")
+(load (concat *my-emacs-lib-dir* "bootstrap-init"))
+(bootstrap-init "victoria")
