@@ -8,7 +8,7 @@
 ;; License: GPL version 3 or (at your option) any later version
 
 ;; ===== Variables =====
-(defvar mikemacs-lib-dir "~/.emacs.d/mikemacs/"
+(defvar *my-emacs-lib-dir* "~/.emacs.d/mikemacs/"
   "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
 
 
@@ -142,7 +142,7 @@
       ((locate-library "git") (require 'git)))
 
 ;; Abbrev mode settings
-(setq abbrev-file-name (concat mikemacs-lib-dir "abbrev-defs.el"))
+(setq abbrev-file-name (concat *my-emacs-lib-dir* "abbrev-defs.el"))
 (read-abbrev-file abbrev-file-name t)
 (setq dabbrev-case-replace nil)
 (setq abbrev-mode t)
