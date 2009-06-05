@@ -210,6 +210,13 @@ load the current buffer into the currently running process.  Switch to
 ;; Eshell definitions
 (defun eshell/eshell () (rename-uniquely) (eshell))
 
+;; Build tags for a project
+;; (defun create-tags (dir-name)
+;;   "Create tags file."
+;;   (interactive "DDirectory: ")
+;;   (eshell-command
+;;    (format "find %s -type f -name \"*.[ch]\" | ctags -e -L -" dir-name)))
+
 
 ;; ===== Keymappings =====
 
