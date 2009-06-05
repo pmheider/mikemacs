@@ -56,7 +56,7 @@
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.dot$" . graphviz-dot-mode))
 
-(add-to-list 'interpreter-mode-alist '("ruby" . inferior-ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;; Set global modes
