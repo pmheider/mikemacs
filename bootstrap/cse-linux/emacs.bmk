@@ -1,0 +1,29 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+((".bashrc"
+  ((filename . "/home/csgrad/mjp44/.bashrc")
+   (front-context-string . "# ~/.bashrc: exe")
+   (rear-context-string)
+   (position . 1)))
+ (".cshrc"
+  ((filename . "/home/csgrad/mjp44/.cshrc")
+   (front-context-string . "#\n# This is the ")
+   (rear-context-string)
+   (position . 1)))
+ (".emacs"
+  ((filename . "/home/csgrad/mjp44/.emacs")
+   (front-context-string . ";; .emacs\n\n;; ==")
+   (rear-context-string)
+   (position . 1)))
+ ("305dir"
+  ((filename . "~/cse305_su09/")
+   (front-context-string . "docs\n  drwxr-xr-")
+   (rear-context-string . "96 Jun  3 10:52 ")
+   (position . 221)))
+ ("mikemacs.el"
+  ((filename . "/home/csgrad/mjp44/.emacs.d/mikemacs/mikemacs.el")
+   (front-context-string . "\n\n(provide 'mike")
+   (rear-context-string . "ark-save-flag 1)")
+   (position . 8936))))
