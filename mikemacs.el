@@ -122,10 +122,13 @@
 
 ;; Yasnippet: Yet another snippet library
 ;; There is some problem with function remove-if that prevents loading.
-;; (when (locate-library "yasnippet")
-;;   (require 'yasnippet)
-;;   (yas/initialize)
-;;   (yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets"))
+(let ((snippet-lib (locate-library "yasnippet")))
+  (when snippet-lib
+    (require 'yasnippet)
+    (yas/initialize)
+    (yas/load-directory (concat (file-name-directory
+                                 snippet-lib)
+                                "snippets"))))
 
 (when (locate-library "ipython")
   (autoload 'py-shell "ipython" "Interactive python shell with ipython" t)
