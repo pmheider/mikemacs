@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("bashrc"
+(("movies.txt"
+  ((filename . "~/Documents/movies.txt")
+   (front-context-string)
+   (rear-context-string . "2: High Voltage\n")
+   (position . 121)))
+ ("bashrc"
   ((filename . "~/.bashrc")
    (front-context-string . " varenka=\"ssh mp")
    (rear-context-string . "e.net\"\n    alias")
