@@ -14,6 +14,9 @@
 ;; Mike-specific!
 (setq user-mail-address "mjp44@buffalo.edu")
 
+;; eshell aliases
+(setq eshell-aliases-file (concat *my-emacs-lib-dir* "eshell-aliases"))
+
 
 ;; ===== Required =====
 
