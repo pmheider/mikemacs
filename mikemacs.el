@@ -147,10 +147,10 @@
   (add-to-list 'vc-handled-backends 'git))
 (when (locate-library "git")
   (require 'git)
-  (cond ((and window-system (locate-library "git-emacs"))
-         (require 'git-emacs)
-         ;; ido not working, why?
-         (setq git--completing-read #'completing-read))))
+  (when (and window-system (locate-library "git-emacs"))
+    (require 'git-emacs)
+    ;; ido not working, why?
+    (setq git--completing-read #'completing-read)))
 
 ;; Abbrev mode settings
 (setq abbrev-file-name (concat *my-emacs-lib-dir* "abbrev-defs.el"))
