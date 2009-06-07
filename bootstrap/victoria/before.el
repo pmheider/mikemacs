@@ -11,7 +11,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/mikemacs")
 (add-to-list 'load-path "~/src/git/contrib/emacs")
-(add-to-list 'load-path "/opt/local/lib/erlang/lib/tools-2.6.2/emacs")
+(add-to-list 'load-path "/opt/local/lib/erlang/lib/tools-2.6.4/emacs")
 (add-to-list 'load-path "~/.emacs.d/plugins/git-emacs")
 
 ;; Machine-specific variables
