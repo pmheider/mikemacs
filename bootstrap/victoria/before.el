@@ -7,6 +7,7 @@
 (add-to-list 'load-path "/opt/local/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime")
+(add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/mikemacs")
 (add-to-list 'load-path "~/src/git/contrib/emacs")

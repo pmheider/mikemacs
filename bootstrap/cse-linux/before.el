@@ -7,6 +7,7 @@
 (add-to-list 'load-path "~/.emacs.d/mikemacs")
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime")
+(add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
 (add-to-list 'load-path "/util/erlang/lib/erlang/lib/tools-2.6.2/emacs")
 (add-to-list 'load-path "~/.emacs.d/plugins/sml-mode")
 
