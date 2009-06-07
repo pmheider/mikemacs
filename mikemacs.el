@@ -162,6 +162,8 @@
   (require 'highlight-parentheses))
 (setq show-paren-mode t)
 
+(when (locate-library "quack") (require 'quack))
+
 
 ;; ===== Function definitions =====
 
