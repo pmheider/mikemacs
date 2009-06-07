@@ -118,7 +118,7 @@
 ;;         (clisp ("/path/to/clisp"))))
 (when (and (eq (emacs-variant) 'emacs) (locate-library "slime-autoloads"))
   (require 'slime-autoloads)
-  (slime-setup))
+  (slime-setup '(inferior-slime slime-scheme)))
 
 ;; Ido: interactive do
 (when (locate-library "ido")
