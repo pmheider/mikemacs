@@ -44,6 +44,7 @@
 (autoload 'run-erlang "erlang-start" "Inferior Erlang shell" t)
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
   "Major mode for editing Graphviz dot files" t)
+(autoload 'run-ruby "inf-ruby" "Inferior Ruby shell (irb)" t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
@@ -144,11 +145,12 @@
 (when (locate-library "vc-git")
   (require 'vc-git)
   (add-to-list 'vc-handled-backends 'git))
-(cond ((and window-system (locate-library "git-emacs"))
-       (require 'git)
-       (require 'git-emacs)
-       (setq git--completing-read #'completing-read)) ; ido not working, why?
-      ((locate-library "git") (require 'git)))
+(when (locate-library "git")
+  (require 'git)
+  (cond ((and window-system (locate-library "git-emacs"))
+         (require 'git-emacs)
+         ;; ido not working, why?
+         (setq git--completing-read #'completing-read))))
 
 ;; Abbrev mode settings
 (setq abbrev-file-name (concat *my-emacs-lib-dir* "abbrev-defs.el"))
