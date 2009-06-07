@@ -1,0 +1,5 @@
+;; -*- emacs-lisp -*-
+
+(defvar *my-emacs-lib-dir* "~/.emacs.d/mikemacs/")
+(load (concat *my-emacs-lib-dir* "bootstrap-init"))
+(bootstrap-init "fiona")
