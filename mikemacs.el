@@ -162,7 +162,16 @@
   (require 'highlight-parentheses))
 (setq show-paren-mode t)
 
+;;; I don't like quack, adds a global menu item
 ;; (when (locate-library "quack") (require 'quack))
+
+;;; Add fontification to allout-mode (an outline-mode)
+;;; From http://www.emacswiki.org/emacs/AllOut
+(defun dto/allout-highlight-headings ()
+  (interactive)
+  (font-lock-add-keywords nil '(("^\\(\\* \\|\\(\\. *\\* \\)\\)\\(.*\\)$" 3
+                                 font-lock-keyword-face t))))
+(add-hook 'allout-mode-hook 'dto/allout-highlight-headings)
 
 
 ;; ===== Function definitions =====
