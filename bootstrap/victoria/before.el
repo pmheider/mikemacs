@@ -25,3 +25,4 @@
 (setq erlang-root-dir "/opt/local/lib/erlang")
 (add-to-list 'exec-path "/opt/local/lib/erlang/bin")
 (setq scheme-program-name "mzscheme")
+(setq prolog-program-name "gprolog")
