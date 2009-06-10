@@ -8,7 +8,8 @@
 ;; License: GPL version 3 or (at your option) any later version
 
 ;; ===== Variables =====
-(defvar *my-emacs-lib-dir* "~/.emacs.d/mikemacs/"
+(defvar *my-emacs-lib-dir* (file-name-directory (or load-file-name
+                                                    (buffer-file-name)))
   "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
 
 ;; Mike-specific!
