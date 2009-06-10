@@ -1,6 +1,0 @@
-This project is licensed under GPL version 3 or later.
-Full text available at:
-
-http://www.gnu.org/copyleft/gpl.html
-
-And locally in COPYING.txt
