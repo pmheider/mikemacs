@@ -45,6 +45,7 @@
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
   "Major mode for editing Graphviz dot files" t)
 (autoload 'run-ruby "inf-ruby" "Inferior Ruby shell (irb)" t)
+(autoload 'ses-mode "ses" "Simple Emacs Spreadsheet mode" t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
