@@ -13,8 +13,9 @@
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
-(add-to-list 'load-path "/util/erlang/lib/erlang/lib/tools-2.6.2/emacs")
 (add-to-list 'load-path "~/.emacs.d/plugins/sml-mode")
+(add-to-list 'load-path "~/.emacs.d/plugins/ses21-031130")
+(add-to-list 'load-path "/util/erlang/lib/erlang/lib/tools-2.6.2/emacs")
 
 ;; Machine-specific variables
 
