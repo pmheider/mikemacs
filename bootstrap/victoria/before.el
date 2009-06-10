@@ -5,12 +5,14 @@
 
 ;; Set load paths
 (add-to-list 'load-path "/opt/local/share/emacs/site-lisp")
+(add-to-list 'load-path "~/usr/local/share/emacs/site-lisp")
 (add-to-list 'load-path "~/.emacs.d/plugins")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/plugins/ses21-031130")
 (add-to-list 'load-path "~/.emacs.d/mikemacs")
+(add-to-list 'load-path "~/.emacs.d/plugins/cedet-1.0pre6/common")
 (add-to-list 'load-path "~/src/git/contrib/emacs")
 (add-to-list 'load-path "/opt/local/lib/erlang/lib/tools-2.6.4/emacs")
 (add-to-list 'load-path "~/.emacs.d/plugins/git-emacs")
