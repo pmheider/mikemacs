@@ -3,4 +3,4 @@ Full text available at:
 
 http://www.gnu.org/copyleft/gpl.html
 
-And locally in gpl-3.0.txt
+And locally in COPYING.txt
