@@ -124,16 +124,17 @@
   (slime-setup '(inferior-slime slime-scheme)))
 
 ;; CEDET: Collection of Emacs Development Environment Tools
-(defun cedet-start ()
-  (interactive)
-  (cond ((locate-library "cedet")
-         (require 'cedet)
-         (semantic-load-enable-minimum-features)
-         (require 'semantic-ia)
-         (require 'semantic-gcc)
-         (semantic-load-enable-code-helpers)
-         (global-ede-mode t))
-        (t (message "Cannot locate CEDET"))))
+(when (locate-library "cedet")
+  (require 'cedet)
+  (semantic-load-enable-minimum-features)
+  (require 'semantic-ia)
+  (require 'semantic-gcc)
+  (semantic-load-enable-code-helpers)
+  (global-ede-mode t))
+
+;; ECB: Emacs Code Browser
+(when (locate-library "ecb")
+  (require 'ecb-autoloads))
 
 ;; Ido: interactive do
 (when (locate-library "ido")
