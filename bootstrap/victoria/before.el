@@ -9,6 +9,7 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/slime")
 (add-to-list 'load-path "~/.emacs.d/plugins/slime/contrib")
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/plugins/ses21-031130")
 (add-to-list 'load-path "~/.emacs.d/mikemacs")
 (add-to-list 'load-path "~/src/git/contrib/emacs")
 (add-to-list 'load-path "/opt/local/lib/erlang/lib/tools-2.6.4/emacs")

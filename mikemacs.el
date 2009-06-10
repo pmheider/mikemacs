@@ -8,7 +8,8 @@
 ;; License: GPL version 3 or (at your option) any later version
 
 ;; ===== Variables =====
-(defvar *my-emacs-lib-dir* "~/.emacs.d/mikemacs/"
+(defvar *my-emacs-lib-dir* (file-name-directory (or load-file-name
+                                                    (buffer-file-name)))
   "mikemacs directory.  Set in .emacs (default ~/.emacs.d/mikemacs)")
 
 ;; Mike-specific!
@@ -45,6 +46,7 @@
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
   "Major mode for editing Graphviz dot files" t)
 (autoload 'run-ruby "inf-ruby" "Inferior Ruby shell (irb)" t)
+(autoload 'ses-mode "ses" "Simple Emacs Spreadsheet mode" t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
@@ -62,6 +64,7 @@
 (add-to-list 'auto-mode-alist '("\\.sml$" . sml-mode))
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.dot$" . graphviz-dot-mode))
+(add-to-list 'auto-mode-alist '("\\.ses$" . ses-mode))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
