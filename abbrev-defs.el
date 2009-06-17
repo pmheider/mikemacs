@@ -1,19 +1,32 @@
-(define-abbrev-table 'eshell-mode-abbrev-table '(
+(define-abbrev-table 'pike-mode-abbrev-table '(
+    ("while" "while" c-electric-continued-statement 0)
+    ("else" "else" c-electric-continued-statement 0)
     ))
 
-(define-abbrev-table 'inferior-sml-mode-abbrev-table '(
+(define-abbrev-table 'idl-mode-abbrev-table '(
     ))
 
-(define-abbrev-table 'comint-mode-abbrev-table '(
+(define-abbrev-table 'java-mode-abbrev-table '(
+    ("while" "while" c-electric-continued-statement 0)
+    ("finally" "finally" c-electric-continued-statement 0)
+    ("else" "else" c-electric-continued-statement 0)
+    ("catch" "catch" c-electric-continued-statement 0)
     ))
 
-(define-abbrev-table 'sml-yacc-mode-abbrev-table '(
+(define-abbrev-table 'objc-mode-abbrev-table '(
+    ("while" "while" c-electric-continued-statement 0)
+    ("else" "else" c-electric-continued-statement 0)
     ))
 
-(define-abbrev-table 'sml-lex-mode-abbrev-table '(
+(define-abbrev-table 'c++-mode-abbrev-table '(
+    ("while" "while" c-electric-continued-statement 0)
+    ("else" "else" c-electric-continued-statement 0)
+    ("catch" "catch" c-electric-continued-statement 0)
     ))
 
-(define-abbrev-table 'sml-cm-mode-abbrev-table '(
+(define-abbrev-table 'c-mode-abbrev-table '(
+    ("while" "while" c-electric-continued-statement 0)
+    ("else" "else" c-electric-continued-statement 0)
     ))
 
 (define-abbrev-table 'sml-mode-abbrev-table '(
@@ -31,6 +44,24 @@
     ("signature" "" sml-form-signature 0)
     ("sig" "" sml-form-sig 0)
     ("case" "" sml-form-case 0)
+    ))
+
+(define-abbrev-table 'sml-cm-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'sml-lex-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'sml-yacc-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'comint-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'inferior-sml-mode-abbrev-table '(
+    ))
+
+(define-abbrev-table 'eshell-mode-abbrev-table '(
     ))
 
 (define-abbrev-table 'log-edit-mode-abbrev-table '(
