@@ -7,6 +7,7 @@
 ;; For running Emacs from the GUI, doesn't set paths properly
 (setenv "PATH" (concat "/util/bin:/projects/mjp44/usr/local/bin:"
                        (getenv "PATH")))
+(setenv "GIT_EXEC_PATH" "/projects/mjp44/usr/local/libexec/git-core")
 
 ;; Set load paths
 (add-to-list 'load-path "~/.emacs.d/mikemacs")
