@@ -265,7 +265,7 @@ load the current buffer into the currently running process.  Switch to
 
 ;; mode-specific keymappings
 
-(define-key text-mode-map (kbd "TAB") 'self-insert-command)
+;; (define-key text-mode-map (kbd "TAB") 'self-insert-command)
 (add-hook 'eshell-mode-hook
           (lambda ()
             (define-key eshell-mode-map [(control ?a)] 'eshell-bol)
