@@ -1,4 +1,5 @@
-alias gpom git push origin master
-alias emacs find-file $1
-alias ll ls -al $1
+alias runhw2 ~/cse305_su09/hw2/hw2run.sh
 alias la ls -a $1
+alias ll ls -al $1
+alias emacs find-file $1
+alias gpom git push origin master

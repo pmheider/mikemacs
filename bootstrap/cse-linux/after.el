@@ -13,3 +13,6 @@
 ;; Shortcut since nothing seems to use it
 ;; Save buffer: M-s
 (global-set-key "\M-s" 'save-buffer)
+
+;; ipython broken on some cse machines, why??
+(setq py-python-command-args '())
