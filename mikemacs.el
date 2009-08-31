@@ -142,7 +142,8 @@
   (require 'ecb-autoloads))
 
 ;; Ido: interactive do
-(when (locate-library "ido")
+;; Annoying behavior in XEmacs
+(when (and (eq (emacs-variant) 'emacs) (locate-library "ido"))
   (require 'ido)
   (ido-mode t)
   (add-to-list 'ido-ignore-files "\\`\\.git/")
