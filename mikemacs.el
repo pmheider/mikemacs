@@ -84,6 +84,10 @@
 
 ;; Mode hooks
 
+;; XEmacs font lock hook
+(when (eq (emacs-variant) 'xemacs)
+  (add-hook 'find-file-hooks (lambda () (font-lock-mode 1))))
+
 (add-hook 'text-mode-hook (lambda ()
                             (setq indent-tabs-mode t)
                             (setq tab-width 8)
