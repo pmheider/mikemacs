@@ -1,0 +1,9 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("policy.txt"
+  ((filename . "~/Documents/policy.txt")
+   (front-context-string . "\nOther Insecure ")
+   (rear-context-string . "08069, Dr00py69\n")
+   (position . 3642))))
