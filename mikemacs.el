@@ -124,13 +124,14 @@
   (slime-setup '(inferior-slime slime-scheme)))
 
 ;; CEDET: Collection of Emacs Development Environment Tools
-(when (locate-library "cedet")
-  (require 'cedet)
-  (semantic-load-enable-minimum-features)
-  (require 'semantic-ia)
-  (require 'semantic-gcc)
-  (semantic-load-enable-code-helpers)
-  (global-ede-mode t))
+;; TODO: figure out why cedet isn't working on cse
+;(when (locate-library "cedet")
+;  (require 'cedet)
+;  (semantic-load-enable-minimum-features)
+;  (require 'semantic-ia)
+;  (require 'semantic-gcc)
+;  (semantic-load-enable-code-helpers)
+;  (global-ede-mode t))
 
 ;; ECB: Emacs Code Browser
 (when (locate-library "ecb")
@@ -146,7 +147,7 @@
 ;; Yasnippet: Yet another snippet library
 ;; There is some problem with function remove-if that prevents loading.
 (let ((snippet-lib (locate-library "yasnippet")))
-  (when snippet-lib
+  (when (and (eq (emacs-variant) 'emacs) snippet-lib)
     (require 'yasnippet)
     (yas/initialize)
     (yas/load-directory (concat (file-name-directory
@@ -158,10 +159,10 @@
   (setq py-python-command-args '( "-colors" "NoColor")))
 
 ;; vc-git and git-emacs for emacs
-(when (locate-library "vc-git")
+(when (and (eq (emacs-variant) 'emacs) (locate-library "vc-git"))
   (require 'vc-git)
   (add-to-list 'vc-handled-backends 'git))
-(when (locate-library "git")
+(when (and (eq (emacs-variant) 'emacs) (locate-library "git"))
   (require 'git)
   (when (and window-system (locate-library "git-emacs"))
     (require 'git-emacs)
