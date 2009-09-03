@@ -47,6 +47,7 @@
   "Major mode for editing Graphviz dot files" t)
 (autoload 'run-ruby "inf-ruby" "Inferior Ruby shell (irb)" t)
 (autoload 'ses-mode "ses" "Simple Emacs Spreadsheet mode" t)
+(autoload 'bee-mode "bmacs" "Bigloo Scheme mode for Emacs" t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
@@ -162,6 +163,11 @@
 (when (locate-library "ipython")
   (autoload 'py-shell "ipython" "Interactive python shell with ipython" t)
   (setq py-python-command-args '( "-colors" "NoColor")))
+
+;; Bigloo (Scheme) mode for Emacs
+(when (locate-library "bmacs")
+  (add-to-list 'auto-mode-alist '("\\.scm$" . bee-mode))
+  (add-to-list 'auto-mode-alist '("\\.sch$" . bee-mode)))
 
 ;; vc-git and git-emacs for emacs
 (when (and (eq (emacs-variant) 'emacs) (locate-library "vc-git"))
