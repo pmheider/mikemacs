@@ -125,7 +125,7 @@
 ;;       '((sbcl ("/path/to/sbcl"))
 ;;         (ccl ("/path/to/ccl"))
 ;;         (clisp ("/path/to/clisp"))))
-(when (and (eq (emacs-variant) 'emacs) (locate-library "slime-autoloads"))
+(when (locate-library "slime-autoloads")
   (require 'slime-autoloads)
   (slime-setup '(inferior-slime slime-scheme)))
 
