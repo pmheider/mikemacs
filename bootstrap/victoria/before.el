@@ -18,6 +18,7 @@
 (add-to-list 'load-path "~/src/git/contrib/emacs")
 (add-to-list 'load-path "/opt/local/lib/erlang/lib/tools-2.6.4/emacs")
 (add-to-list 'load-path "~/.emacs.d/plugins/git-emacs")
+(add-to-list 'load-path "/usr/local/share/emacs/bigloo/")
 
 ;; Machine-specific variables
 (setq inferior-lisp-program "/Applications/AllegroCL/mlisp")
