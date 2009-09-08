@@ -102,7 +102,8 @@
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Turn off auto-filling in shells
-(add-hook 'comint-mode-hook (lambda () (turn-off-auto-fill)))
+(when (eq (emacs-variant) 'emacs)
+  (add-hook 'comint-mode-hook (lambda () (turn-off-auto-fill))))
 
 (add-hook 'graphviz-dot-mode-hook
           (lambda () (setq graphviz-dot-auto-indent-on-semi nil)))
