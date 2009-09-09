@@ -103,8 +103,9 @@
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; Turn off auto-filling in shells
-(when (eq (emacs-variant) 'emacs)
-  (add-hook 'comint-mode-hook (lambda () (turn-off-auto-fill))))
+(if (eq (emacs-variant) 'emacs)
+  (add-hook 'comint-mode-hook (lambda () (turn-off-auto-fill)))
+  (add-hook 'comint-mode-hook (lambda () (auto-fill-mode))))
 
 (add-hook 'graphviz-dot-mode-hook
           (lambda () (setq graphviz-dot-auto-indent-on-semi nil)))
@@ -294,7 +295,6 @@ load the current buffer into the currently running process.  Switch to
           (lambda ()
             (define-key erlang-mode-map "\C-m"
               'newline-and-indent)))
-
 
 ;; ===== Miscellaneous =====
 
