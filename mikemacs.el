@@ -294,7 +294,10 @@ load the current buffer into the currently running process.  Switch to
           (lambda ()
             (define-key erlang-mode-map "\C-m"
               'newline-and-indent)))
-
+;(add-hook 'slime-mode-hook
+;          (lambda ()
+;            (define-key slime-mode-map (kbd "\C-c \C-q")
+;              'slime-quit-lisp)))
 
 ;; ===== Miscellaneous =====
 
