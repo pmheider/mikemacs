@@ -145,7 +145,7 @@
 
 ;; Ido: interactive do
 ;; Annoying behavior in XEmacs
-(when (and (eq (emacs-variant) 'emacs) (locate-library "ido"))
+(when (locate-library "ido")
   (require 'ido)
   (ido-mode t)
   (add-to-list 'ido-ignore-files "\\`\\.git/")
