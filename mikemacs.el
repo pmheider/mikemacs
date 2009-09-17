@@ -48,6 +48,7 @@
 (autoload 'run-ruby "inf-ruby" "Inferior Ruby shell (irb)" t)
 (autoload 'ses-mode "ses" "Simple Emacs Spreadsheet mode" t)
 (autoload 'bee-mode "bmacs" "Bigloo Scheme mode for Emacs" t)
+(autoload 'ebib "ebib" "Ebib, a BibTeX database manager." t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
