@@ -38,9 +38,6 @@
   (autoload 'run-acl "init-for-acl" "Initialize Allegro Lisp" t))
 (autoload 'sml-mode "sml-mode-startup" "Major mode for editing SML files" t)
 (autoload 'run-sml "sml-mode-startup" "Inferior SML shell" t)
-;; Requires machine-specific erlang executable path, e.g.
-;; (setq erlang-root-dir "/path/to/erlang")
-;; (add-to-list 'exec-path "/path/to/erlang/bin")
 (autoload 'erlang-mode "erlang-start" "Major mode for editing Erlang files" t)
 (autoload 'run-erlang "erlang-start" "Inferior Erlang shell" t)
 (autoload 'graphviz-dot-mode "graphviz-dot-mode"
