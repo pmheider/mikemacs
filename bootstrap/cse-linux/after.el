@@ -5,6 +5,13 @@
 (if (eq (emacs-variant) 'xemacs)
     (require 'tex-site))
 
+;; Change pdf viewer to acroread
+(add-hook 'LaTeX-mode-hook
+          #'(lambda ()
+              (add-to-list 'TeX-output-view-style
+                           '("^pdf$" "." "acroread -useFrontEndProgram %o")))
+          t)
+
 ;; Fix broken yank to yank from clipboard
 ;; Yank from Emacs: C-y
 ;; Yank from system clipboard: C-M-y
