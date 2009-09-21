@@ -6,6 +6,7 @@
     (require 'tex-site))
 
 ;; Change pdf viewer to acroread
+(setq TeX-PDF-mode t)
 (add-hook 'LaTeX-mode-hook
           #'(lambda ()
               (add-to-list 'TeX-output-view-style
