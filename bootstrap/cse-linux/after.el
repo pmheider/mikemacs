@@ -9,7 +9,7 @@
 (add-hook 'LaTeX-mode-hook
           #'(lambda ()
               (add-to-list 'TeX-output-view-style
-                           '("^pdf$" "." "acroread -useFrontEndProgram %o")))
+                           '("^pdf$" "." "acroread %o")))
           t)
 
 ;; Fix broken yank to yank from clipboard
