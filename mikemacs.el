@@ -46,6 +46,7 @@
 (autoload 'ses-mode "ses" "Simple Emacs Spreadsheet mode" t)
 (autoload 'bee-mode "bmacs" "Bigloo Scheme mode for Emacs" t)
 (autoload 'ebib "ebib" "Ebib, a BibTeX database manager." t)
+(autoload 'clojure-mode "clojure-mode" "Major mode for editing Clojure files" t)
 
 (add-to-list 'auto-mode-alist '("\\.l$" . c-mode))
 (add-to-list 'auto-mode-alist '("\\.y$" . c-mode))
@@ -64,6 +65,7 @@
 (add-to-list 'auto-mode-alist '("\\.erl$" . erlang-mode))
 (add-to-list 'auto-mode-alist '("\\.dot$" . graphviz-dot-mode))
 (add-to-list 'auto-mode-alist '("\\.ses$" . ses-mode))
+(add-to-list 'auto-mode-alist '("\\.clj$" . clojure-mode))
 
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
@@ -127,6 +129,10 @@
 (when (locate-library "slime-autoloads")
   (require 'slime-autoloads)
   (slime-setup '(inferior-slime slime-scheme)))
+;; Add Clojure support
+(when (locate-library "swank-clojure-autoload")
+  (setq swank-clojure-binary "clojure")
+  (require 'swank-clojure-autoload))
 
 ;; CEDET: Collection of Emacs Development Environment Tools
 ;; TODO: figure out why cedet isn't working on cse
