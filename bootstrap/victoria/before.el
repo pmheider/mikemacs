@@ -22,11 +22,12 @@
 
 ;; Machine-specific variables
 (setq inferior-lisp-program "/Applications/AllegroCL/mlisp")
+;(setq inferior-lisp-program "/Applications/ccl/dx86cl64")
 (setq slime-lisp-implementations
       '((mlisp ("/Applications/AllegroCL/mlisp"))
         (alisp ("/Applications/AllegroCL/alisp"))
         (sbcl ("/opt/local/bin/sbcl"))
-        (ccl ("/Users/mprentice/bin/ccl64"))
+        (ccl ("/Applications/ccl/dx86cl64"))
         (clisp ("/opt/local/bin/clisp"))))
 (setq erlang-root-dir "/opt/local/lib/erlang")
 (add-to-list 'exec-path "/opt/local/lib/erlang/bin")
